@@ -99,13 +99,45 @@ function eliminarHijos(){
     }
 }
 
-/* Reinicia el tablero */
+/* Reinicia el tablero 
 function reinicio(){
-    var colorPrincipal = document.getElementById("mainColor").value;    
+    var colorPrincipal = "red";    
     var cuadrados = document.querySelectorAll(".square");
     for(var i = 0; i < cuadrados.length; i++){
         cuadrados[i].style.backgroundColor = colorPrincipal;
     }
+}*/
+function reinicio(){
+    eliminarHijos();
+    inicioReinicio();
+    //calcularTablero();
+}
+
+
+function inicioReinicio(){
+    var colorPrincipal = 'red';
+    var colorSecundario = 'red';
+    
+    var contenedor = document.getElementById("container");
+    var alto = 20;
+    var ancho = 20;
+    var colorPrincipalRecogido = 'red';
+    var colorSecundarioRecogido = 'red';
+    colorPrincipalRecogido.value = colorPrincipal;
+    colorSecundarioRecogido.value = colorSecundario;
+    contenedor.style.width = (50 * ancho) + "px";
+    contenedor.style.height = (50 * alto) + "px";
+    
+    for(var i = 0; i < ancho * alto; i++){
+        var node = document.createElement("div");
+        node.className = "cuadrado";
+        node.textContent = (i + 1);
+        node.style.backgroundColor = colorPrincipal;
+        contenedor.appendChild(node);
+    }
+    inicioAuto();
+    _colorPrincipal = colorPrincipal;
+    _colorSecundario = colorSecundario;
 }
 
 /* Guarda el color */
